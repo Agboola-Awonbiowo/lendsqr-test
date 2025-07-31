@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useAuth } from "../hooks/useAuth";
 import "../styles/Header.scss";
 import Logo from "./Logo";
@@ -31,17 +31,20 @@ const Header: React.FC<HeaderProps> = ({ onMenuToggle }) => {
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
         setShowUserDropdown(false);
       }
     };
 
     if (showUserDropdown) {
-      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
     }
 
     return () => {
-      document.removeEventListener('mousedown', handleClickOutside);
+      document.removeEventListener("mousedown", handleClickOutside);
     };
   }, [showUserDropdown]);
 
@@ -74,18 +77,18 @@ const Header: React.FC<HeaderProps> = ({ onMenuToggle }) => {
           Docs
         </button>
         <button className="header__notifications">🔔</button>
-        <div className="header__user" ref={dropdownRef}>
+        <div
+          className="header__user"
+          ref={dropdownRef}
+          onClick={toggleUserDropdown}
+        >
           <div className="header__user-avatar">
             {user?.fullName?.charAt(0) || "A"}
           </div>
           <span className="header__user-name">
             {user?.fullName || "Adedeji"}
           </span>
-          <button
-            className="header__user-dropdown"
-            onClick={toggleUserDropdown}
-            aria-label="User menu"
-          >
+          <button className="header__user-dropdown" aria-label="User menu">
             ▼
           </button>
 
