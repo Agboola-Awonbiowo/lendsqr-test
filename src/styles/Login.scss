@@ -1,0 +1,363 @@
+@use "sass:color";
+
+.login {
+  min-height: 100vh;
+  display: flex;
+  background-color: var(--background-light);
+
+  &__container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+  }
+
+  &__left {
+    flex: 1;
+    background: linear-gradient(135deg, #39cdcc 0%, #213f7d 100%);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+
+    @media (max-width: 768px) {
+      display: none;
+    }
+  }
+
+  &__right {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+
+    @media (max-width: 768px) {
+      flex: none;
+      width: 100%;
+      padding: 20px;
+    }
+  }
+
+  &__logo {
+    padding: 40px;
+    z-index: 10;
+  }
+
+  &__illustration {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+  }
+
+  &__form-container {
+    width: 100%;
+    max-width: 400px;
+  }
+
+  &__title {
+    font-size: 40px;
+    font-weight: 700;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+    text-align: center;
+
+    @media (max-width: 768px) {
+      font-size: 32px;
+    }
+  }
+
+  &__subtitle {
+    font-size: 20px;
+    color: var(--text-secondary);
+    margin-bottom: 40px;
+    text-align: center;
+
+    @media (max-width: 768px) {
+      font-size: 16px;
+      margin-bottom: 30px;
+    }
+  }
+
+  &__form {
+    width: 100%;
+  }
+
+  &__error {
+    background-color: rgba(228, 3, 59, 0.1);
+    color: var(--danger-color);
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 14px;
+  }
+
+  &__forgot-password {
+    margin: 16px 0 32px;
+    text-align: left;
+  }
+
+  &__submit {
+    width: 100%;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 600;
+  }
+}
+
+// Logo styles
+.logo {
+  display: flex;
+  align-items: center;
+
+  &__image {
+    filter: brightness(0) invert(1); // Makes the logo white for the dark background
+  }
+}
+
+// Illustration styles
+.illustration {
+  position: relative;
+  width: 100%;
+  height: 100%;
+
+  &__character {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 5;
+  }
+
+  &__shapes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  &__speech-bubble {
+    position: absolute;
+    top: 30%;
+    left: 60%;
+    z-index: 6;
+  }
+}
+
+// Character styles
+.character {
+  position: relative;
+
+  &__head {
+    width: 60px;
+    height: 60px;
+    background-color: #f4f4f4;
+    border-radius: 50%;
+    position: relative;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      width: 30px;
+      height: 30px;
+      background-color: #ffd700;
+      border-radius: 50%;
+    }
+
+    &::after {
+      content: "";
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      width: 20px;
+      height: 20px;
+      background-color: #213f7d;
+      border-radius: 50%;
+    }
+  }
+
+  &__body {
+    width: 40px;
+    height: 60px;
+    background-color: #39cdcc;
+    border-radius: 20px;
+    margin-top: -10px;
+    margin-left: 10px;
+  }
+
+  &__briefcase {
+    width: 30px;
+    height: 20px;
+    background-color: #213f7d;
+    border-radius: 4px;
+    position: absolute;
+    bottom: -10px;
+    right: -15px;
+  }
+}
+
+// Shape styles
+.shape {
+  position: absolute;
+
+  &--ring {
+    width: 80px;
+    height: 80px;
+    border: 8px solid #ffd700;
+    border-radius: 50%;
+    bottom: 20%;
+    right: 10%;
+  }
+
+  &--pill {
+    width: 120px;
+    height: 40px;
+    background-color: #39cdcc;
+    border-radius: 20px;
+    top: 20%;
+    left: 10%;
+  }
+
+  &--crescent {
+    width: 60px;
+    height: 60px;
+    background-color: #e4033b;
+    border-radius: 50%;
+    top: 60%;
+    left: 20%;
+    clip-path: polygon(50% 0%, 100% 0%, 100% 100%, 50% 100%);
+  }
+
+  &--star {
+    width: 40px;
+    height: 40px;
+    background-color: #ffd700;
+    clip-path: polygon(
+      50% 0%,
+      61% 35%,
+      98% 35%,
+      68% 57%,
+      79% 91%,
+      50% 70%,
+      21% 91%,
+      32% 57%,
+      2% 35%,
+      39% 35%
+    );
+    top: 30%;
+    right: 30%;
+  }
+
+  &--sphere {
+    width: 50px;
+    height: 50px;
+    background-color: #39cdcc;
+    border-radius: 50%;
+    bottom: 40%;
+    left: 60%;
+  }
+
+  &--prism {
+    width: 60px;
+    height: 40px;
+    background-color: #39cdcc;
+    clip-path: polygon(25% 0%, 75% 0%, 100% 100%, 0% 100%);
+    bottom: 30%;
+    left: 40%;
+  }
+}
+
+// Speech bubble styles
+.speech-bubble {
+  width: 40px;
+  height: 30px;
+  background-color: #ffb6c1;
+  border-radius: 20px;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 10px;
+    width: 0;
+    height: 0;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+    border-top: 10px solid #ffb6c1;
+  }
+
+  &__line {
+    width: 20px;
+    height: 2px;
+    background-color: #666;
+    margin: 8px auto;
+    border-radius: 1px;
+  }
+}
+
+// Form styles
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-input {
+  width: 100%;
+  padding: 16px;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: var(--white);
+
+  &::placeholder {
+    color: var(--text-light);
+  }
+
+  &:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(57, 205, 204, 0.2);
+  }
+}
+
+.password-input {
+  position: relative;
+
+  .form-input {
+    padding-right: 80px;
+  }
+}
+
+.password-toggle {
+  position: absolute;
+  right: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: var(--primary-color);
+  font-size: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  text-transform: uppercase;
+
+  &:hover {
+    color: color.adjust(#39cdcc, $lightness: -10%);
+  }
+}
+
+.forgot-password-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
